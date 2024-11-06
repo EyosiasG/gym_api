@@ -10,5 +10,6 @@ router.post('/login', UserController.loginUser);           // Login route
 router.get('/profile', verifyToken, UserController.getUserDetails);  // Protected route to get user details
 router.get('/getAllUsers', UserController.getAllUsers);
 
-module.exports = router;
+router.post('/register', UserController.registerUser); 
 
+module.exports = router;

@@ -1,11 +1,10 @@
 // Importing required modules
 const express = require('express');
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 
 const userRoutes = require('./routes/user.route');
 const sessionRoutes = require('./routes/session.route');
+const transactionRoutes = require('./routes/transaction.route');
 
 // Creating an Express application instance
 const app = express();
@@ -28,6 +27,7 @@ mongoose.connect('mongodb+srv://eyosiasgezahegn28:Eyos1818!@cluster0.cqjzwer.mon
 
 app.use('/user', userRoutes);
 app.use('/session', sessionRoutes);
+app.use('/transaction', transactionRoutes);
 
 app.get('/', (req, res) => {
     res.send('Welcome to the User Registration and Login API!');
