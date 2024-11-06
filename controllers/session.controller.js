@@ -23,7 +23,12 @@ module.exports = {
 
     getAllSessions: async (req, res) => {
         try {
-            const sessions = await Session.find();
+            // Parse limit and offset from query parameters, with defaults
+            const limit = parseInt(req.query.limit) || 10; // Default limit to 10 if not provided
+            const offset = parseInt(req.query.offset) || 0; // Default offset to 0 if not provided
+  
+          // Fetch sessions with limit and offset
+            const sessions = await Session.find().skip(offset).limit(limit);
             res.status(200).json(sessions);
         } catch (error) {
             console.log("Error: ", error);
