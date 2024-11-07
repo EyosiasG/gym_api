@@ -99,9 +99,11 @@ module.exports = {
 
     getAllActiveMembers: async (req, res) => {
       try{
-    
+        const activeMembers = await User.find({status: 'active'});
+        res.status(200).json({activeMembers});
       }catch(error){
-
+        console.log("Error: ", error)
+        res.status(500).json({error: 'Internal Server Error'});
       }
     },
 
