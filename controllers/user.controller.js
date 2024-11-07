@@ -37,6 +37,37 @@ module.exports = {
       }
     },
 
+    registerTrainer: async (req, res) => {
+      try{
+        const existingTrainer = await User.findOne({ email: req.body.email });
+        if (existingTrainer) {
+          return res.status(400).json({ error: 'Email already exists' });
+        }
+  
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const newTrainer = new User({
+          username: req.body.username,
+          email: req.body.email,
+          password: hashedPassword,
+          dateOfBirth: req.body.dateOfBirth,
+          phoneNumber: req.body.phoneNumber,
+          membershipType: req.body.membershipType,
+          remark: req.body.req,
+          subscriptionType: req.body.subscriptionType,
+          emergencyContactName: req.body.emergencyContactName,
+          emergencyContactNumber: req.body.emergencyContactNumber,
+          status: req.body.status,
+          role: req.body.role
+
+        });
+  
+        await newTrainer.save();
+        res.status(201).json({ message: 'User registered successfully' });
+      }catch(error){
+
+      }
+    },
+
     // Authenticate and log in a user
     loginUser: async (req, res) => {
       try {

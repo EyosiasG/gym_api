@@ -24,14 +24,14 @@ const userSchema = mongoose.Schema({
     },
     membershipType: {
         type: String,
-        required: true,
+        function() { return this.role !== 'trainer'; } ,
     },
     remark: {
         type: String
     },
     subscriptionType: {
         type: String,
-        required: true
+        function() { return this.role !== 'trainer'; } ,
     },
     emergencyContactName: {
         type: String,
@@ -48,7 +48,10 @@ const userSchema = mongoose.Schema({
     role:{
         type: String,
         default: 'client'
-    }
+    },
+    expertise: { 
+        type: [String] 
+    },
     
 
 });
