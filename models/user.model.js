@@ -52,7 +52,9 @@ const userSchema = mongoose.Schema({
     expertise: { 
         type: [String] 
     },
-    
+    imagePath: { 
+        type: String 
+    }
 
 });
 module.exports = mongoose.model('User', userSchema);
