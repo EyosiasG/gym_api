@@ -11,6 +11,7 @@ router.get('/profile', verifyToken, UserController.getUserDetails);  // Protecte
 router.get('/getAllUsers', UserController.getAllUsers);
 router.get('/getAllActiveMembersCount', UserController.getAllActiveMembersCount);
 router.get('/getAllActiveMembers', UserController.getAllActiveMembers);
+router.get('/getAllInactiveMembers', UserController.getAllInactiveMembers);
 router.post('/register', UserController.registerUser); 
 
 module.exports = router;

@@ -107,6 +107,16 @@ module.exports = {
       }
     },
 
+    getAllInactiveMembers: async (req, res) => {
+      try{
+        const inactiveMembers = await User.find({status: 'inactive'});
+        res.status(200).json({inactiveMembers});
+      }catch(error){
+        console.log("Error: ", error)
+        res.status(500).json({error: 'Internal Server Error'});
+      }
+    },
+
     getAllActiveMembersCount: async (req, res) => {
       try{
         const activeUsersCount = await User.countDocuments({status: 'active'});
