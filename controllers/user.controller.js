@@ -36,7 +36,7 @@ module.exports = {
         res.status(500).json({ error: 'Internal server error' });
       }
     },
-  
+
     // Authenticate and log in a user
     loginUser: async (req, res) => {
       try {
