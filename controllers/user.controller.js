@@ -97,6 +97,14 @@ module.exports = {
       }
     },
 
+    getAllActiveMembers: async (req, res) => {
+      try{
+    
+      }catch(error){
+
+      }
+    },
+
     getAllActiveMembersCount: async (req, res) => {
       try{
         const activeUsersCount = await User.countDocuments({status: 'active'});
