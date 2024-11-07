@@ -95,5 +95,15 @@ module.exports = {
       } catch (error) {
           res.status(500).json({ error: 'Internal server error' });
       }
-  }
+    },
+
+    getAllActiveMembersCount: async (req, res) => {
+      try{
+        const activeUsersCount = await User.countDocuments({status: 'active'});
+        res.status(200).json({activeUsersCount});
+      }catch(error){
+        console.log("Error: ", error);
+        res.status(500).json({error: 'Internal Server Error'});
+      }
+    }
   };

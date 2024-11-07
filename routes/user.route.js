@@ -9,7 +9,7 @@ router.post('/register', UserController.registerUser);     // Register route
 router.post('/login', UserController.loginUser);           // Login route
 router.get('/profile', verifyToken, UserController.getUserDetails);  // Protected route to get user details
 router.get('/getAllUsers', UserController.getAllUsers);
-
+router.get('/getAllActiveMembersCount', UserController.getAllActiveMembersCount);
 router.post('/register', UserController.registerUser); 
 
 module.exports = router;
