@@ -26,7 +26,7 @@ module.exports = {
           emergencyContactNumber: req.body.emergencyContactNumber,
           status: req.body.status,
           role: req.body.role,
-          imagePath: req.file ? req.file.path : null 
+          imagePath: req.fileUrl || null
 
         });
   
@@ -68,14 +68,15 @@ module.exports = {
             username: user.username, 
             email: user.email,
             dateOfBirth: user.dateOfBirth,
-            honeNumber: user.phoneNumber,
+            phoneNumber: user.phoneNumber,
             membershipType: user.membershipType,
             remark: user.req,
             subscriptionType: user.body.subscriptionType,
             emergencyContactName: user.emergencyContactName,
             emergencyContactNumber: user.emergencyContactNumber,
             status: user.status,
-            role: user.role
+            role: user.role,
+            
         });
       } catch (error) {
         res.status(500).json({ error: 'Internal server error' });
